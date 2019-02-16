@@ -66,10 +66,4 @@ public class AccountTest {
                 , 0.0);
     }
 
-
-    //fixme
-    private void resultShouldBe(double expected) {
-
-    }
-
 }

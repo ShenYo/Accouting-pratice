@@ -29,19 +29,29 @@ public class Accounting {
 
         repo.getAll().forEach(budget -> {
             if (isAfterStartDate(start, budget) && isBeforeEndDate(end, budget)) {
-                if(budgetNoData(budget)) {
+                if (budgetNoData(budget)) {
                     return;
                 }
-                totalAmount += budget.amount / getLengthOfMonth(budget);
+
+                if (isSameMonth(start, end)) {
+                    totalAmount += (budget.amount / getLengthOfMonth(budget)) * getPeriodBetweenStartAndEnd(start, end);
+                } else {
+
+                }
+
             }
         });
 
 
-        return totalAmount * getPeriodBetweenStartAndEnd(start, end);
+        return totalAmount;
+    }
+
+    private boolean isSameMonth(LocalDate start, LocalDate end) {
+        return YearMonth.of(start.getYear(), start.getMonth()).equals(YearMonth.of(end.getYear(), end.getMonth()));
     }
 
     private int getPeriodBetweenStartAndEnd(LocalDate start, LocalDate end) {
-        return Period.between(start, end).getDays()  + 1;
+        return Period.between(start, end).getDays() + 1;
     }
 
     private int getLengthOfMonth(Budget budget) {
