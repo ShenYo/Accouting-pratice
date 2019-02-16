@@ -12,7 +12,10 @@ import java.util.List;
  */
 
 
-public interface BudgetRepo {
+public class BudgetRepoImpl implements BudgetRepo {
 
-    List<Budget> getAll();
+    @Override
+    public List<Budget> getAll() {
+        return null;
+    }
 }
