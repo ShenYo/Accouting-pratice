@@ -10,7 +10,7 @@ package com.odde.Account.model;
 
 public class Budget {
     final String yaerMonth;
-    final Object amount;
+    final Integer amount;
 
     public Budget(String yaerMonth, Integer amount) {
         this.yaerMonth = yaerMonth;
