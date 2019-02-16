@@ -57,7 +57,12 @@ public class AccountTest {
     public void intervalDayBudgetMultiMonth() {
         givenDateInterval(LocalDate.of(2019, 1, 30), LocalDate.of(2019, 2, 5));
         resultShouldBe(12);
+    }
 
+    @Test
+    public void intervalDayBudgetMultiMonthFromJanToMarch() {
+        givenDateInterval(LocalDate.of(2019, 1, 15), LocalDate.of(2019, 3, 10));
+        resultShouldBe(73);
     }
 
     private void givenDateInterval(LocalDate start, LocalDate end) {
