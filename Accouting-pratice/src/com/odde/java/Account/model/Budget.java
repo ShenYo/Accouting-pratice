@@ -1,4 +1,4 @@
-package com.odde.Account.model;
+package com.odde.java.Account.model;
 
 /**
  * Description:
@@ -9,6 +9,7 @@ package com.odde.Account.model;
 
 
 public class Budget {
+
     final String yaerMonth;
     final Integer amount;
 
