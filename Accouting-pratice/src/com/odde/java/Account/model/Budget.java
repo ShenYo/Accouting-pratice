@@ -10,8 +10,8 @@ package com.odde.java.Account.model;
 
 public class Budget {
 
-    final String yaerMonth;
-    final Integer amount;
+    public final String yaerMonth;
+    public final Integer amount;
 
     public Budget(String yaerMonth, Integer amount) {
         this.yaerMonth = yaerMonth;

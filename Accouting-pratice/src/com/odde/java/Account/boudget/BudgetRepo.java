@@ -1,6 +1,6 @@
-package com.odde.Account.boudget;
+package com.odde.java.Account.boudget;
 
-import com.odde.Account.model.Budget;
+import com.odde.java.Account.model.Budget;
 
 import java.util.List;
 

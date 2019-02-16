@@ -36,14 +36,40 @@ public class AccountTest {
 
     @Test
     public void EmptyBudget() {
-        resultShouldBe(0);
+        Assert.assertEquals(0, accounting.totalAmount(
+                LocalDate.of(2019, 3, 1),
+                LocalDate.of(2019, 3, 1))
+                , 0.0);
     }
 
+    @Test
+    public void getSingleDayBudget(){
+        Assert.assertEquals(2, accounting.totalAmount(
+                LocalDate.of(2019, 2, 16),
+                LocalDate.of(2019, 2, 16))
+                , 0.0);
+    }
+
+    @Test
+    public void getIntervalDayBudgetInSingleMonth(){
+        Assert.assertEquals(5, accounting.totalAmount(
+                LocalDate.of(2019, 1, 11),
+                LocalDate.of(2019, 1, 15))
+                , 0.0);
+    }
+
+    @Test
+    public void getIntervalDayBudgetMultiMonth(){
+        Assert.assertEquals(12, accounting.totalAmount(
+                LocalDate.of(2019, 1, 30),
+                LocalDate.of(2019, 2, 5))
+                , 0.0);
+    }
+
+
+    //fixme
     private void resultShouldBe(double expected) {
-        Assert.assertEquals(expected, accounting.totalAmount(
-                LocalDate.of(2019, 1, 1),
-                LocalDate.of(2019, 1, 1))
-        , 0.0);
+
     }
 
 }

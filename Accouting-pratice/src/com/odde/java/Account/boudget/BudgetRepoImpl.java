@@ -1,6 +1,7 @@
 package com.odde.Account.boudget;
 
 
+import com.odde.java.Account.boudget.BudgetRepo;
 import com.odde.java.Account.model.Budget;
 
 import java.util.ArrayList;
@@ -16,9 +17,7 @@ import java.util.Map;
  */
 
 
-public class BudgetRepoImpl implements com.odde.Account.boudget.BudgetRepo {
-    Map<String, Budget> list = new HashMap<>()
-
+public class BudgetRepoImpl implements BudgetRepo {
 
     @Override
     public List<Budget> getAll() {
@@ -32,9 +31,9 @@ public class BudgetRepoImpl implements com.odde.Account.boudget.BudgetRepo {
             add(new Budget("201907", 310));
             add(new Budget("201908", 620));
             add(new Budget("201909", null));
-            add(new Budget("2019010", 930));
-            add(new Budget("2019011", 300));
-            add(new Budget("2019012", 155));
+            add(new Budget("201910", 930));
+            add(new Budget("201911", 300));
+            add(new Budget("201912", 155));
         }};
     }
 }
