@@ -20,6 +20,7 @@ import java.time.LocalDate;
 public class AccountTest {
 
     private Accounting accounting;
+    private double result;
 
     @Before
     public void init() {
@@ -27,43 +28,44 @@ public class AccountTest {
     }
 
     @Test
-    public void InvalidDate(){
-        Assert.assertEquals(0, accounting.totalAmount(
-                LocalDate.of(2019, 2, 1),
-                LocalDate.of(2019, 1, 1))
-                , 0.0);
+    public void invalidDate() {
+        givenDateInterval(LocalDate.of(2019, 2, 1), LocalDate.of(2019, 1, 1));
+        resultShouldBe(0);
+    }
+
+
+
+    @Test
+    public void emptyBudget() {
+        givenDateInterval(LocalDate.of(2019, 3, 1), LocalDate.of(2019, 3, 1));
+        resultShouldBe(0);
     }
 
     @Test
-    public void EmptyBudget() {
-        Assert.assertEquals(0, accounting.totalAmount(
-                LocalDate.of(2019, 3, 1),
-                LocalDate.of(2019, 3, 1))
-                , 0.0);
+    public void singleDayBudget() {
+        givenDateInterval(LocalDate.of(2019, 2, 16), LocalDate.of(2019, 2, 16));
+        resultShouldBe(2);
     }
 
     @Test
-    public void getSingleDayBudget(){
-        Assert.assertEquals(2, accounting.totalAmount(
-                LocalDate.of(2019, 2, 16),
-                LocalDate.of(2019, 2, 16))
-                , 0.0);
+    public void intervalDayBudgetInSingleMonth() {
+        givenDateInterval(LocalDate.of(2019, 1, 11), LocalDate.of(2019, 1, 15));
+        resultShouldBe(5);
     }
 
     @Test
-    public void getIntervalDayBudgetInSingleMonth(){
-        Assert.assertEquals(5, accounting.totalAmount(
-                LocalDate.of(2019, 1, 11),
-                LocalDate.of(2019, 1, 15))
-                , 0.0);
+    public void intervalDayBudgetMultiMonth() {
+        givenDateInterval(LocalDate.of(2019, 1, 30), LocalDate.of(2019, 2, 5));
+        resultShouldBe(12);
+
     }
 
-    @Test
-    public void getIntervalDayBudgetMultiMonth(){
-        Assert.assertEquals(12, accounting.totalAmount(
-                LocalDate.of(2019, 1, 30),
-                LocalDate.of(2019, 2, 5))
-                , 0.0);
+    private void givenDateInterval(LocalDate start, LocalDate end) {
+        result = accounting.totalAmount(start, end);
+    }
+
+    private void resultShouldBe(double expceted) {
+        Assert.assertEquals(expceted, result, 0.0);
     }
 
 }
