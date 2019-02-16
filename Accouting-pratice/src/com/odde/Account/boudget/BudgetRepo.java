@@ -1,3 +1,5 @@
+package com.odde.Account.boudget;
+
 /**
  * Description:
  *
@@ -6,5 +8,5 @@
  */
 
 
-public class InitClass {
+public interface BudgetRepo {
 }
