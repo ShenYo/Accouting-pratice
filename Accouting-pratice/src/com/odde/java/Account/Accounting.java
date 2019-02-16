@@ -1,6 +1,7 @@
 package com.odde.java.Account;
 
 import com.odde.java.Account.boudget.BudgetRepo;
+import com.odde.java.Account.boudget.BudgetRepoImpl;
 import com.odde.java.Account.model.Budget;
 
 import org.jetbrains.annotations.NotNull;
@@ -23,8 +24,8 @@ import java.util.stream.Collectors;
 public class Accounting {
 
 
-    private BudgetRepo repo = new com.odde.Account.boudget.BudgetRepoImpl();
-    private int totalAmount = 0;
+    private BudgetRepo repo = new BudgetRepoImpl();
+    private Double totalAmount = 0d;
 
     public double totalAmount(LocalDate start, LocalDate end) {
         if (isInvalidPeriod(start, end)) {
@@ -81,7 +82,7 @@ public class Accounting {
         return YearMonth.of(start.getYear(), start.getMonth()).equals(YearMonth.of(end.getYear(), end.getMonth()));
     }
 
-    private int getSingleDayBudget(Budget budget) {
+    private double getSingleDayBudget(Budget budget) {
         return budget.amount / getLengthOfMonth(budget);
     }
 

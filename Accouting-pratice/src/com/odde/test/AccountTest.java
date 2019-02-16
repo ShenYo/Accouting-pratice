@@ -28,7 +28,7 @@ public class AccountTest {
     }
 
     @Test
-    public void invalidDate() {
+    public void invalidInterval() {
         givenDateInterval(LocalDate.of(2019, 2, 1), LocalDate.of(2019, 1, 1));
         resultShouldBe(0);
     }
@@ -36,7 +36,7 @@ public class AccountTest {
 
 
     @Test
-    public void emptyBudget() {
+    public void budgetNoData() {
         givenDateInterval(LocalDate.of(2019, 3, 1), LocalDate.of(2019, 3, 1));
         resultShouldBe(0);
     }
@@ -48,19 +48,19 @@ public class AccountTest {
     }
 
     @Test
-    public void intervalDayBudgetInSingleMonth() {
+    public void intervalBudgetInSingleMonth() {
         givenDateInterval(LocalDate.of(2019, 1, 11), LocalDate.of(2019, 1, 15));
         resultShouldBe(5);
     }
 
     @Test
-    public void intervalDayBudgetMultiMonth() {
+    public void intervalBudgetMultiMonth() {
         givenDateInterval(LocalDate.of(2019, 1, 30), LocalDate.of(2019, 2, 5));
         resultShouldBe(12);
     }
 
     @Test
-    public void intervalDayBudgetMultiMonthFromJanToMarch() {
+    public void intervalBudgetMultiMonthFromJanToMarch() {
         givenDateInterval(LocalDate.of(2019, 1, 15), LocalDate.of(2019, 3, 10));
         resultShouldBe(73);
     }
